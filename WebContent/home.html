@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--tag css-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link href="css/estilo.css" rel="stylesheet" media="screen">
+          
+  </head>
+
+
+  <body>
+
+
+    <header>
+      <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed "  data-toggle="collapse" data-target="#lista-menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+            <a class="navbar-brand" href="home.html"><img src="img/logo3.png" alt="Logo da empresa"></a>
+          </div>
+
+          <div id="lista-menu" class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="home.html">Home</a></li>
+          
+          <!--<li><a href="cadastro.html">Cadastro</a></li>-->
+              
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="cadastro.html">Cliente</a></li>
+                  <li><a href="cadastroGuincho.html">Organização</a></li>
+                  <li><a href="cadastroOcorrencia.html">Ocorrência</a></li>            
+                </ul>
+            </li>
+
+
+
+              <li><a href="ocorrencias.html">Ocorrências</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+
+
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+         <li data-target="#myCarousel" data-slide-to="4"></li>
+      </ol>
+
+    
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/mater.png" alt="Chania">
+        </div>
+
+        <div class="item">
+          <img src="img/mater.png" alt="Chania">
+        </div>
+
+        <div class="item">
+          <img src="img/mater.png" alt="Flower">
+        </div>
+
+        <div class="item">
+          <img src="img/mater.png" alt="Flower">
+        </div>
+
+        <div class="item">
+          <img src="img/mater.png" alt="Flower">
+        </div>
+
+      </div>
+    </div>
+    <hr />
+  
+    <div class="container page-wrap">
+      <h2>Notícias</h2><hr />
+    <div class="row">
+    
+        <article>
+          <div class="col-md-4">
+            <div class="container-Noticias">
+              <a href="noticia.html"><img src="img/noticia01.png" alt="imagem de ..."/>
+              <h4 >Lorem Aaddd dolor sit amet consectetur.</h4></a>
+              <time><i class="fa fa-clock-o"></i> 20 sep, 2016</time>
+              <p>Pellentesque tristiques. Quisque dictum. Integer sagittis convallis, rutrum elementum congue, nibh. Suspendisse dictum porta lectus.</p>
+              <a href="noticia.html" class="btn btn-default corBotao ">Ver mais</a>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <div class="col-md-4">
+            <div class="container-Noticias">
+              <a href="noticia.html"><img src="img/noticia02.png" alt="imagem de ..."/>
+              <h4 >Lorem dolor sit amet consectetur.</h4></a>
+              <time><i class="fa fa-clock-o"></i> 21 sep, 2016</time>
+              <p>Pellentesque asdwer ante ut risus. Quisque dictum. Integer sagittis convallis, rutrum elementum congue, nibh. Suspendisse dictum porta.</p>
+              <a href="noticia.html" class="btn btn-default corBotao ">Ver mais</a>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <div class="col-md-4">
+            <div class="container-Noticias">
+              <a href="noticia.html"><img src="img/noticia03.png" alt="imagem de ..."/>
+              <h4 >Lorem Aaddd dolor sit amet.</h4></a>
+              <time><i class="fa fa-clock-o"></i> 22 sep, 2016</time>
+              <p >Pellentesque tristique ante ut risus. Quisque dictum. Integer sagittis convallis, rutrum elementum congue, nibh. Suspendisse dictum porta lectus.</p>
+              <a href="noticia.html" class="btn btn-default corBotao ">Ver mais</a>
+            </div>
+          </div>
+        </article>
+      
+      </div>
+      <hr />
+    </div>
+
+
+
+    <footer class="site-footer">    
+      <div class="container">
+          <div class="row">
+           <!-- <div class="col-md-6">
+                <img class="img-responsive" src="img/logo.png" alt="Logo da empresa"> 
+            </div>
+          -->
+            <div class="col-md-12">
+              <div class="text-center center-block">
+                <a href="https://www.facebook.com" title="Facebook">
+                  <i id="social-fb" class="fa fa-facebook-square fa-4x social"></i></a>
+                <a href="https://www.twitter.com" title="Twitter">
+                  <i id="social-tw" class="fa fa-twitter-square fa-4x social"></i></a>
+                <a href="https://www.plus.google.com" title="Google+">
+                  <i id="social-gp" class="fa fa-google-plus-square fa-4x social"></i></a>
+                <a href="https://www.linkedin.com" title="Linkdin">
+                  <i id="social-lk" class="fa fa-linkedin-square fa-4x social"></i></a>
+                <a href="mailto:teste@furb.com" title="E-mail">
+                  <i id="social-em" class="fa fa-envelope-square fa-4x social"></i></a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+  </body>
+</html>

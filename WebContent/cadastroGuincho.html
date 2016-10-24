@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Cadastro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--tag css-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <link href="css/estilo.css" rel="stylesheet" media="screen">      
+  </head>
+
+
+  <body>
+
+    <header>
+      <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed "  data-toggle="collapse" data-target="#lista-menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+            <a class="navbar-brand" href="home.html"><img src="img/logo3.png" alt="Logo da empresa"></a>
+          </div>
+
+          <div id="lista-menu" class="collapse navbar-collapse" >
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="home.html">Home</a></li>
+              <!--<li class="active"><a href="cadastro.html">Cadastro</a></li>-->
+               
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="cadastro.html">Cliente</a></li>
+                  <li><a href="cadastroGuincho.html">Organização</a></li>
+                  <li><a href="cadastroOcorrencia.html">Ocorrência</a></li>            
+                </ul>
+                </li>
+              
+              <li><a href="ocorrencias.html">Ocorrências</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="login.html">Login</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+
+
+    <div class="container page-wrap">  
+      
+    <!--
+      <fieldset>
+        <legend>Cadastrar Organização</legend>
+      </fieldset>
+    -->
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+
+          <form name="form2" method="post" action="CadastroPessoaFisicaServlet">
+            <div class="form-group">
+
+              <h3>Dados da Organização</h3>
+              <label class=" control-label field-label" for="empresa">Empresa</label>  
+              <input id="empresa" name="empresa" type="text" placeholder="Ex. João" class="form-control input-md">
+             
+              <label class=" control-label field-label" for="cnpj">CNPJ</label>  
+              <input id="cnpj" name="cnpj" type="text" placeholder="Ex. 999.999.999-99" class="form-control input-md cpf-mask" onKeyPress="mascaraCNPJ(form2.cnpj);" maxlength="18" onBlur="validaCNPJ(form2.cnpj);">    
+
+              <label class=" control-label field-label" for="email">Email</label>  
+              <input id="email" name="email" type="email" placeholder="Ex. joao@email.com" class="form-control input-md cpf-mask">    
+
+              <label class=" control-label field-label" for="telefone">Telefone</label>  
+              <input id="telefone" name="telefone" type="text" placeholder="Ex. (xx)0000-0000" class="form-control input-md cpf-mask" onKeyPress="mascaraTelefone(form2.telefone);" maxlength="14" onBlur= "validaTelefone(form2.telefone);">    
+
+
+              <h3>Endereço</h3>
+              <label class="control-label field-label" for="rua">Rua</label>  
+              <input id="rua" name="rua" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">  
+
+              <label class="control-label field-label" for="bairro">Bairro</label>  
+              <input id="bairro" name="bairro" type="text" placeholder="Ex. Centro" class="form-control input-md cpf-mask">  
+
+              <label class="control-label field-label" for="cidade">Cidade</label>  
+              <input id="cidade" name="cidade" type="text" placeholder="Ex. Blumenau" class="form-control input-md cpf-mask">  
+
+
+              <h3>Dados do Veiculo</h3>
+              <label class="control-label field-label" for="marca">Marca</label>  
+              <input id="marca" name="marca" type="text" placeholder="Ex. Volkswagen" class="form-control input-md cpf-mask">  
+
+
+              <label class="control-label field-label" for="modelo">Modelo</label>  
+              <input id="modelo" name="modelo" type="text" placeholder="Ex. Gol" class="form-control input-md cpf-mask">  
+             
+              <label class="control-label field-label" for="ano">Ano</label>  
+              <input id="ano" name="ano" type="text" placeholder="Ex.  1990" class="form-control input-md cpf-mask">  
+
+              <label class="control-label field-label" for="placa">Placa</label>  
+              <input id="placa" name="placa" type="text" placeholder="Ex. ZZZ-9999" class="form-control input-md cpf-mask">  
+
+
+              <h3>Segurança</h3>
+              <label class="control-label field-label" for="senha">Senha</label>  
+              <input id="senha" name="senha" type="password" placeholder="Insira aqui sua senha" class="form-control input-md cpf-mask">  
+         
+              <label class="control-label field-label" for="confirmarSenha">Confirmar Senha</label>  
+              <input id="confirmarSenha" name="confirmarSenha" type="password" placeholder="Insira novamente sua senha" class="form-control input-md cpf-mask">
+            </div>
+
+            <!--<button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>-->
+            <input type="submit" id="button1id" name="button1id" class="btn btn-success" value="CADASTRAR" />
+            <!-- <button id="button2id" name="button2id" class="btn btn-danger">Scary Button</button>-->  
+          </form> 
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="site-footer">    
+      <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-center center-block">
+                <a href="https://www.facebook.com" title="Facebook">
+                  <i id="social-fb" class="fa fa-facebook-square fa-4x social"></i></a>
+                <a href="https://www.twitter.com" title="Twitter">
+                  <i id="social-tw" class="fa fa-twitter-square fa-4x social"></i></a>
+                <a href="https://www.plus.google.com" title="Google+">
+                  <i id="social-gp" class="fa fa-google-plus-square fa-4x social"></i></a>
+                <a href="https://www.linkedin.com" title="Linkdin">
+                  <i id="social-lk" class="fa fa-linkedin-square fa-4x social"></i></a>
+                <a href="mailto:teste@furb.com" title="E-mail">
+                  <i id="social-em" class="fa fa-envelope-square fa-4x social"></i></a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/validaCadastroGuincho.js"></script>
+
+  </body>
+</html>
