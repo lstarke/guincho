@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.google.gson.Gson;
+
 @Entity
 @Table(name = "PESSOA_JURIDICA")
 public class PessoaJuridica {
@@ -124,7 +126,10 @@ public class PessoaJuridica {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
-	}
+	}	
 	
+	public String toJson() {
+		return new Gson().toJson(this);
+	}
 
 }

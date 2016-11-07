@@ -1,11 +1,13 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import modelo.PessoaFisica;
 
-public class PessoaFisicaDAO {
+public class PessoaFisicaDAO  {
 	
 	public void inserir(PessoaFisica p) {		
 		
