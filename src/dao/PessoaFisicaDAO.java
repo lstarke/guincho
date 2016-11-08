@@ -19,8 +19,8 @@ public class PessoaFisicaDAO  {
 		manager.persist(p);		
 		
 		tx.commit();
-		manager.close();
-		JPAUtil.close();	
+		//manager.close();
+		//JPAUtil.close();	
 		
 	}
 

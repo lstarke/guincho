@@ -20,8 +20,9 @@ public class Servidor {
 	
 	public static HttpServer inicializaServidor() {
 		URI uri = URI.create("http://localhost:8080");
-		ResourceConfig config = new ResourceConfig().packages("servicos");
+		ResourceConfig config = new ResourceConfig();
 		config.register(new CORSFilter());
+		config.packages("servicos");				
 		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config);
 		return server;		
 	}

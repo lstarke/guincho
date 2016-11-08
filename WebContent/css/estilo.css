@@ -1,3 +1,9 @@
+#googleMap {
+    width: 100%; /* Span the entire width of the screen */
+    height: 600px; /* Set the height to 400 pixels */
+    
+    }
+
 body {
   background-color: #696969;
   padding-top: 55px;

@@ -10,10 +10,14 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="css/estilo.css" rel="stylesheet" media="screen">      
+
+    <!--AngularJS-->  
+    <script src="js/angular.js"></script>
+
   </head>
 
 
-  <body>
+  <body ng-app =  "myApp">
 
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
@@ -72,7 +76,7 @@
         
         <form method="post" action="CadastroPessoaFisicaServlet" >
 
-          <div class="form-group">
+          <div class="form-group" ng-controller="cadastroOcorrenciaCtrl">
             <h3>Localização</h3>
 
             <label class="control-label field-label" for="textinput">Rua</label>  
@@ -86,6 +90,19 @@
 
             <label class=" control-label field-label" for="textinput">Ponto de referencia</label>  
             <input id="pontoReferencia" name="pontoReferencia" type="text" placeholder="Ex. Perto da Prefeitura" class="form-control input-md">
+
+            <label class="control-label field-label" for="uf">UF</label>
+            <input id="uf" name="uf" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+                
+            <label class="control-label field-label" for="complemento">Complemento</label>
+            <input id="complemento" name="complemento" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+
+            <label class="control-label field-label" for="numero">Numero</label>
+            <input id="numero" name=numero" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+
+            <label class="control-label field-label" for="cep">CEP</label>
+            <input id="cep" name="cep" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+              
 
           </div>
 
@@ -148,13 +165,24 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
+    <script type="text/javascript">
+        
+    var app = angular.module('myApp', []);
+    app.controller('cadastroOcorrenciaCtrl', function($scope, $http) {
+      $scope.Register = function() {$http.post("http://localhost:8080",{
+        'cidade': $scope.cidade,
+        'uf': $scope.bairro,
+        'bairro': $scope.bairro,
+        'rua' :$scope.rua,
+        'complemento' :$scope.complemento,
+        'numero' :$scope.numero,
+        'cep' :$scope.cep})
+        .success(function(response) {$scope.usersData = response.users;$scope.message = response.message;});
+        //editar a resposta do servidor
+
+    };
+      });
+
+  </script>
   </body>
-
-
-
-
-
-
- 
-
 </html>

@@ -43,6 +43,10 @@
     </header>
 
 
+<div class="container">
+      <div id="googleMap"></div>
+ 
+    </div>
 
 
     <div class="container page-wrap">
@@ -74,6 +78,31 @@
 
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        var myCenter = new google.maps.LatLng(-26.905480, -49.078664);
+
+        function initialize() {
+        var mapProp = {
+        center:myCenter,
+        zoom:15,
+        scrollwheel:true,
+        draggable:true,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        var marker = new google.maps.Marker({
+        position:myCenter,
+        });
+
+        marker.setMap(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
   </body>
 </html>
