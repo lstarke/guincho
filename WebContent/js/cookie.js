@@ -33,8 +33,10 @@ function verificaUsuarioAutenticado() {
     var usuario = buscaCookie("usuario");
     
     if (usuario != "") {
+    	window.open("home.html","_self")
         // usuário já fez login há pouco tempo. Direciona para Home.
     } else {
+    	
        // é a primeira vez do usuário. Deixa na tela de login (e chama salvaCookie quando ele fizer login).
     }
 }
