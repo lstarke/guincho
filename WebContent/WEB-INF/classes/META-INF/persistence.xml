@@ -12,6 +12,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 		<class>modelo.PessoaFisica</class>
 		<class>modelo.Veiculo</class>
 		<class>modelo.PessoaJuridica</class>
+		<class>modelo.OrdemServico</class>
+		<class>modelo.LocalizacaoCliente</class>
 
 
 	<properties>
