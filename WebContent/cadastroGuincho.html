@@ -72,7 +72,7 @@
               <input id="responsavel" name="responsavel" type="text" ng-model= "guincho.responsavel" placeholder="Ex. João da Silva" class="form-control input-md" onKeyPress="mascaraCaracter(cadastroGuincho.responsavel);">
 
               <label class=" control-label field-label" for="cnpj">CNPJ</label>
-              <input id="cnpj" name="cnpj" type="text" placeholder="Ex. 999.999.999-99" class="form-control input-md" onKeyPress="mascaraCNPJ(cadastroGuincho.cnpj);" maxlength="18" onBlur="validaCNPJ(form2.cnpj);">
+              <input id="cnpj" name="cnpj" type="text" ng-model= "guincho.cnpj" placeholder="Ex. 999.999.999-99" class="form-control input-md" onKeyPress="mascaraCNPJ(cadastroGuincho.cnpj);" maxlength="18" onBlur="validaCNPJ(form2.cnpj);">
 
               <label class=" control-label field-label" for="email">Email</label>
               <input id="email" name="email" type="email" ng-model="guincho.email" placeholder="Ex. joao@email.com" class="form-control input-md">
