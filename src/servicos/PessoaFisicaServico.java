@@ -26,7 +26,7 @@ public class PessoaFisicaServico {
 	public Response adiciona(String conteudo) {
 		PessoaFisica pessoaFisica = new Gson().fromJson(conteudo, PessoaFisica.class);
 		pessoaFisica.setDataCadastro(new Date());
-		System.out.println(pessoaFisica.getNome());
+		pessoaFisica.setSenha(pessoaFisica.getSenha());
 		new PessoaFisicaDAO().inserir(pessoaFisica);		
 		URI uri = URI.create("/pessoafisica/" + pessoaFisica.getCodigo());
 		return Response.created(uri).build();

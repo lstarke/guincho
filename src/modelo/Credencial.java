@@ -6,6 +6,7 @@ public class Credencial {
 	
 	private String email;
 	private String senha;
+	private TipoPessoaEnum tipoPessoa;
 	
 	public String getEmail() {
 		return email;
@@ -18,8 +19,13 @@ public class Credencial {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}	
+	public TipoPessoaEnum getTipoPessoa() {
+		return tipoPessoa;
 	}
-	
+	public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
 	public String toJson() {
 		return new Gson().toJson(this);
 	}
