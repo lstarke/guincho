@@ -1,5 +1,8 @@
 package modelo;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -85,7 +88,7 @@ public class PessoaJuridica {
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		this.senha = this.hash(senha);
 	}
 
 	public Endereco getEndereco() {
@@ -130,6 +133,23 @@ public class PessoaJuridica {
 	
 	public String toJson() {
 		return new Gson().toJson(this);
+	}
+	
+	private String hash(String senha) {
+		MessageDigest algorithm;
+		StringBuilder hexString = null;
+		try {
+			algorithm = MessageDigest.getInstance("SHA-256");
+			byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+			hexString = new StringBuilder();
+			for (byte b : messageDigest) {
+			  hexString.append(String.format("%02X", 0xFF & b));
+			}
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return hexString.toString();
 	}
 
 }

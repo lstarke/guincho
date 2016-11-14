@@ -17,7 +17,5 @@ public class LoginServico {
 	public String buscar(@PathParam("email") String email) {		
 		return new LoginDAO().buscar(email).toJson();
 	}	
-	
-	
 
 }
