@@ -53,8 +53,16 @@ public class OrdemServico {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CODIGO_LOCALIZACAO_CLIENTE")
-	private LocalizacaoCliente localizacaoCliente;
+	private LocalizacaoCliente localizacaoCliente;	
 	
+	public boolean isEmAndamento() {
+		return emAndamento;
+	}
+
+	public void setEmAndamento(boolean emAndamento) {
+		this.emAndamento = emAndamento;
+	}
+
 	public OrdemServico() {
 		this.finalizada = false;
 		this.emAndamento = false;
