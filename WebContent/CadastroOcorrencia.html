@@ -1,24 +1,18 @@
 <!DOCTYPE html>
-<html>
-
+<html ng-app="myApp">
   <head>
-    <title>Cadastro</title>
+    <title>Nova ocorrência</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--tag css-->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="css/estilo.css" rel="stylesheet" media="screen">      
-
-    <!--AngularJS-->  
     <script src="js/angular.js"></script>
-
   </head>
 
 
-  <body ng-app =  "myApp">
-
+  <body ng-controller="cadastroOcorrencia">
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
         <div class="container">
@@ -36,18 +30,14 @@
           <div id="lista-menu" class="collapse navbar-collapse" >
             <ul class="nav navbar-nav navbar-right">
               <li><a href="home.html">Home</a></li>
-              
-          <!--<li><a href="cadastro.html">Cadastro</a></li>-->
-              
               <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar<span class="caret"></span></a>
                  <ul class="dropdown-menu">
                    <li><a href="cadastro.html">Cliente</a></li>
                    <li><a href="cadastroGuincho.html">Organização</a></li>
-                   <li><a href="cadastroOcorrencia.html">Ocorrência</a></li>            
+                   <li class="active"><a href="cadastroOcorrencia.html">Ocorrência</a></li>            
                  </ul>
              </li>
-
 
               <li><a href="ocorrencias.html">Ocorrências</a></li>
               <li><a href="sobre.html">Sobre</a></li>
@@ -60,76 +50,27 @@
 
  <div class="container">
       <div id="googleMap"></div>
-     
 </div>
 
-
-
   <div class="container page-wrap">
-    <!--
-    <fieldset>
-      <legend>Cadastrar Ocorrencia</legend>
-    </fieldset>
-    -->
     <div class="row">   
       <div class="col-md-4 col-md-offset-4">
         
-        <form method="post" action="CadastroPessoaFisicaServlet" >
+        <form name="cadastroOcorrencia" method="post" action="javascript:void(0);">
+            <div class="form-group" ng-controller="cadastroOcorrenciaCtrl">
+            
 
-          <div class="form-group" ng-controller="cadastroOcorrenciaCtrl">
-            <h3>Localização</h3>
-
-            <label class="control-label field-label" for="textinput">Rua</label>  
-            <input id="rua" name="rua" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">  
-
-            <label class="control-label field-label" for="textinput">Bairro</label>  
-            <input id="bairro" name="bairro" type="text" placeholder="Ex. Centro" class="form-control input-md cpf-mask">  
-
-            <label class="control-label field-label" for="textinput">Cidade</label>  
-            <input id="cidade" name="cidade" type="text" placeholder="Ex. Blumenau" class="form-control input-md cpf-mask">  
-
-            <label class=" control-label field-label" for="textinput">Ponto de referencia</label>  
-            <input id="pontoReferencia" name="pontoReferencia" type="text" placeholder="Ex. Perto da Prefeitura" class="form-control input-md">
-
-            <label class="control-label field-label" for="uf">UF</label>
-            <input id="uf" name="uf" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
-                
-            <label class="control-label field-label" for="complemento">Complemento</label>
-            <input id="complemento" name="complemento" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
-
-            <label class="control-label field-label" for="numero">Numero</label>
-            <input id="numero" name=numero" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
-
-            <label class="control-label field-label" for="cep">CEP</label>
-            <input id="cep" name="cep" type="text" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
-              
-
-          </div>
-
-          <input type="submit" id="button1id" name="button1id" class="btn btn-success" value="Salvar" />
+            <input type="submit" id="cadastrarOcorrencia" name="cadastrarOcorrencia" class="btn btn-success" value="CADASTRAR" ng-click="addOcorrencia(ocorrencia)"/>
         </form>
       </div>
     </div>
   </div>
 
-
-
-  
     <footer class="site-footer">    
       <div class="container">
           <div class="row">
             <div class="col-md-12">
               <div class="text-center center-block">
-                <a href="https://www.facebook.com" title="Facebook">
-                  <i id="social-fb" class="fa fa-facebook-square fa-4x social"></i></a>
-                <a href="https://www.twitter.com" title="Twitter">
-                  <i id="social-tw" class="fa fa-twitter-square fa-4x social"></i></a>
-                <a href="https://www.plus.google.com" title="Google+">
-                  <i id="social-gp" class="fa fa-google-plus-square fa-4x social"></i></a>
-                <a href="https://www.linkedin.com" title="Linkdin">
-                  <i id="social-lk" class="fa fa-linkedin-square fa-4x social"></i></a>
-                <a href="mailto:teste@furb.com" title="E-mail">
-                  <i id="social-em" class="fa fa-envelope-square fa-4x social"></i></a>
               </div>
             </div>
           </div>
@@ -139,7 +80,6 @@
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
-
 
   <script>
         var myCenter = new google.maps.LatLng(-26.905480, -49.078664);
@@ -164,25 +104,5 @@
 
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-
-    <script type="text/javascript">
-        
-    var app = angular.module('myApp', []);
-    app.controller('cadastroOcorrenciaCtrl', function($scope, $http) {
-      $scope.Register = function() {$http.post("http://localhost:8080",{
-        'cidade': $scope.cidade,
-        'uf': $scope.bairro,
-        'bairro': $scope.bairro,
-        'rua' :$scope.rua,
-        'complemento' :$scope.complemento,
-        'numero' :$scope.numero,
-        'cep' :$scope.cep})
-        .success(function(response) {$scope.usersData = response.users;$scope.message = response.message;});
-        //editar a resposta do servidor
-
-    };
-      });
-
-  </script>
   </body>
 </html>
