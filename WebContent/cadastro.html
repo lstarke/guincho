@@ -108,7 +108,7 @@
               <input id="cpf" name="cpf" type="text" ng-model="vm.pessoa.cpf" placeholder="Ex. 999.999.999-99" class="form-control input-md" onKeyPress="mascaraCPF(form1.cpf);" maxlength="14" onBlur= "validaCPF(form1.cpf);">
               
               <label class=" control-label field-label" for="rg">RG</label>
-              <input id="rg" name="rg" type="text" ng-model="vm.pessoa.rg" placeholder="Ex. 9.999.999" class="form-control input-md" maxlength="12" onKeyPress="mascaraRG(form1.rg);">
+              <input id="rg" name="rg" type="text" ng-model="vm.pessoa.rg" placeholder="Ex. 9.999.999" class="form-control input-md" maxlength="10" onKeyPress="mascaraInteiro(form1.rg);">
 
               <label class=" control-label field-label" for="email">Email</label>
               <input id="email" name="email" type="email" ng-model="vm.pessoa.email" placeholder="Ex. joao@email.com" class="form-control input-md cpf-mask">
@@ -122,7 +122,7 @@
               <input id="cidade" name="cidade" type="text" ng-model="vm.pessoa.endereco.cidade" placeholder="Ex. Blumenau" class="form-control input-md cpf-mask">
               
               <label class="control-label field-label" for="uf">UF</label>
-              <input id="uf" name="uf" type="text" ng-model="vm.pessoa.endereco.uf" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+              <input id="uf" name="uf" type="text" ng-model="vm.pessoa.endereco.uf" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask" maxlength="2" onKeyPress="mascaraCaracter(form1.uf);">
 
               <label class="control-label field-label" for="bairro">Bairro</label>
               <input id="bairro" name="bairro" type="text" ng-model="vm.pessoa.endereco.bairro" placeholder="Ex. Centro" class="form-control input-md cpf-mask">
@@ -134,10 +134,10 @@
               <input id="complemento" name="complemento" type="text" ng-model="vm.pessoa.endereco.complemento" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
 
               <label class="control-label field-label" for="numero">Numero</label>
-              <input id="numero" name=numero" type="text" ng-model="vm.pessoa.endereco.numero" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">
+              <input id="numero" name=numero" type="text" ng-model="vm.pessoa.endereco.numero" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask" maxlength="8" onKeyPress="mascaraInteiro(form1.cep);">
 
               <label class="control-label field-label" for="cep">CEP</label>
-              <input id="cep" name="cep" type="text" ng-model="vm.pessoa.endereco.cep" placeholder="Ex. 89107000" class="form-control input-md cpf-mask">
+              <input id="cep" name="cep" type="text" ng-model="vm.pessoa.endereco.cep" placeholder="Ex. 89107000" class="form-control input-md cpf-mask" maxlength="10" onKeyPress="mascaraInteiro(form1.cep);">
               
 
               <h3>Dados do Veiculo</h3>
@@ -151,23 +151,23 @@
               <input id="modelo" name="modelo" type="text" ng-model="vm.veiculo.modelo" placeholder="Ex. Gol" class="form-control input-md cpf-mask">
               
               <label class="control-label field-label" for="ano">Ano</label>
-              <input id="ano" name="ano" type="text" ng-model="vm.veiculo.ano" maxlength="4" placeholder="Ex.  1990" class="form-control input-md cpf-mask"> 
+              <input id="ano" name="ano" type="text" ng-model="vm.veiculo.ano" maxlength="4" placeholder="Ex.  1990" class="form-control input-md cpf-mask" onKeyPress="mascaraInteiro(form1.ano);"> 
 
               <label class="control-label field-label" for="placa">Placa</label>
-              <input id="placa" name="placa" type="text" ng-model="vm.veiculo.placa" placeholder="Ex. ZZZ-9999" class="form-control input-md cpf-mask">
+              <input id="placa" name="placa" type="text" ng-model="vm.veiculo.placa" placeholder="Ex. ZZZ-9999" class="form-control input-md cpf-mask" maxlength="8">
 
               <label class="control-label field-label" for="cor">Cor</label>  
               <input id="cor" name="cor" type="text" ng-model="vm.veiculo.cor" placeholder="Ex. Preto" class="form-control input-md cpf-mask">  
               
               <label class="control-label field-label" for="renavam">RENAVAM</label>  
-              <input id="renavam" name="renavam" type="text" ng-model="vm.veiculo.renavam" placeholder="Ex. 99999999" class="form-control input-md cpf-mask">  
+              <input id="renavam" name="renavam" type="text" ng-model="vm.veiculo.renavam" placeholder="Ex. 99999999" class="form-control input-md cpf-mask" maxlength="10" onKeyPress="mascaraInteiro(form1.renavam);">  
 
               <!--{{vm.veiculo}}-->
 
               
               <!--<button ng-click="vm.addVeiculo(veiculo)">add veiculo</button>-->
               </div>
-              <div margin-top = 20px>
+              <div class="marginBotao">
                 
                 <input type="submit" id="buttonVeiculo" name="buttonVeiculo" margin-top:20px class="btn btn-success" value="ADD Veiculo" ng-click="vm.addVeiculo(veiculo)"/>
 
