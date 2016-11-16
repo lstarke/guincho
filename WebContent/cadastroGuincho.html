@@ -2,26 +2,56 @@
 <html ng-app="myApp">
 
   <head>
-    <title>Cadastro de organização</title>
+    <title>Cadastro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--tag css-->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="css/estilo.css" rel="stylesheet" media="screen">
+    <link href="css/estilo.css" rel="stylesheet" media="screen">     
+
     <script src="js/angular.js"></script>
 
     <script >
-      angular.module("myApp", []);
-      angular.module("myApp").controller("cadastroCtrl", function ($scope, $http) {
-          $scope.addGuincho = function (guincho) {
-            $http.post("http://localhost:8080/pessoajuridica/novo", guincho);
-          };
+    
+
+    angular.module("myApp", []);
+    angular.module("myApp").controller("cadastroPessoaJuridicaCtrl", function ($scope, $http) {
+      var vm = this;
+
+      vm.veiculos = [];
+      vm.pessoajuridica = {};
+
+
+      vm.addVeiculo = function() {
+        vm.veiculos.push(vm.veiculo);        
+      }
+
+      vm.addDados = function (pessoajuridica) {
+        console.log(vm.veiculos);
+        //console.log(pessoa);
+        console.log(vm.pessoajuridica);
+
+
+        vm.pessoajuridica.veiculos = vm.veiculos;
+        $http({
+          method: 'POST',
+          url:'http://localhost:8080/pessoajuridica/novo',
+          data: vm.pessoajuridica
+        });
+        //$http.post("http://localhost:8080/pessoafisica/novo", pessoa);
+
+      };
       });
-    </script>
+
+  </script>
+
   </head>
 
-  <body ng-controller="cadastroCtrl">
+
+  <body ng-controller = "cadastroPessoaJuridicaCtrl as vm">
+
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
         <div class="container">
@@ -32,21 +62,24 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
+          
             <a class="navbar-brand" href="home.html"><img src="img/logo3.png" alt="Logo da empresa"></a>
           </div>
 
           <div id="lista-menu" class="collapse navbar-collapse" >
             <ul class="nav navbar-nav navbar-right">
               <li><a href="home.html">Home</a></li>
+              <!--<li class="active"><a href="cadastro.html">Cadastro</a></li>-->
+               
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastrar<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="cadastro.html">Cliente</a></li>
-                  <li class="active"><a href="cadastroGuincho.html">Organização</a></li>
-                  <li><a href="cadastroOcorrencia.html">Ocorrência</a></li>
+                  <li><a href="cadastroGuincho.html">Organização</a></li>
+                  <li><a href="cadastroOcorrencia.html">Ocorrência</a></li>            
                 </ul>
                 </li>
+              
               <li><a href="ocorrencias.html">Ocorrências</a></li>
               <li><a href="sobre.html">Sobre</a></li>
               <li><a href="login.html">Login</a></li>
@@ -56,70 +89,109 @@
       </nav>
     </header>
 
-
-    <div class="container page-wrap">
+{{message}}
+    <div class="container page-wrap">  
+      
+    <!--
+      <fieldset>
+        <legend>Cadastrar Organização</legend>
+      </fieldset>
+    -->
       <div class="row">
         <div class="col-md-offset-4 col-md-4">
 
-          <form name="cadastroGuincho" method="post" action="javascript:void(0);">
-            <div class="form-group" ng-controller="cadastroCtrl">
+          <form name="form2" method="post" action="javascript:void(0);">
+            <div class="form-group" ng-controller="cadastroPessoaJuridicaCtrl"> <!---->
+
               <h3>Dados da Organização</h3>
+              
+              <label class=" control-label field-label" for="razao">Razao Social</label>  
+              <input id="razao" name="razao" type="text" ng-model="vm.pessoajuridica.razao" placeholder="Ex. nao sei" class="form-control input-md cpf-mask">    
 
-              <label class="control-label field-label" for="nome">Razão Social</label>
-              <input id="razaoSocial" name="razaoSocial" type="text" ng-model= "guincho.razaoSocial" placeholder="Ex. Guincho do João" class="form-control input-md">
+              <label class=" control-label field-label" for="responsavel">Responsavel</label>  
+              <input id="responsavel" name="responsavel" type="text" ng-model="vm.pessoajuridica.responsavel" placeholder="Ex. nao sei" class="form-control input-md cpf-mask">  
 
-              <label class="control-label field-label" for="nome">Responsável</label>
-              <input id="responsavel" name="responsavel" type="text" ng-model= "guincho.responsavel" placeholder="Ex. João da Silva" class="form-control input-md" onKeyPress="mascaraCaracter(cadastroGuincho.responsavel);">
+              <label class=" control-label field-label" for="cnpj">CNPJ</label>  
+              <input id="cnpj" name="cnpj" type="text" ng-model="vm.pessoajuridica.cnpj" placeholder="Ex. 999.999.999-99" class="form-control input-md cpf-mask" onKeyPress="mascaraCNPJ(form2.cnpj);" maxlength="18" onBlur="validaCNPJ(form2.cnpj);">    
 
-              <label class=" control-label field-label" for="cnpj">CNPJ</label>
-              <input id="cnpj" name="cnpj" type="text" ng-model= "guincho.cnpj" placeholder="Ex. 999.999.999-99" class="form-control input-md" onKeyPress="mascaraCNPJ(cadastroGuincho.cnpj);" maxlength="18" onBlur="validaCNPJ(form2.cnpj);">
+              <label class=" control-label field-label" for="email">Email</label>  
+              <input id="email" name="email" type="email" ng-model="vm.pessoajuridica.email"  placeholder="Ex. joao@email.com" class="form-control input-md cpf-mask">    
 
-              <label class=" control-label field-label" for="email">Email</label>
-              <input id="email" name="email" type="email" ng-model="guincho.email" placeholder="Ex. joao@email.com" class="form-control input-md">
+              <label class=" control-label field-label" for="telefone">Telefone</label>  
+              <input id="telefone" name="telefone" type="text" ng-model = "vm.pessoajuridica.telefone" placeholder="Ex. (xx)0000-0000" class="form-control input-md cpf-mask" onKeyPress="mascaraTelefone(form2.telefone);" maxlength="14" onBlur= "validaTelefone(form2.telefone);">    
 
-              <label class=" control-label field-label" for="telefone">Telefone</label>
-              <input id="telefone" name="telefone" type="text" ng-model="guincho.telefone" placeholder="Ex. (xx)0000-0000" class="form-control input-md" onKeyPress="mascaraTelefone(cadastroGuincho.telefone);" maxlength="14" onBlur= "validaTelefone(cadastroGuincho.telefone);">
+              <!--
+              <label class=" control-label field-label" for="empresa">Empresa</label>  
+              <input id="empresa" name="empresa" type="text" placeholder="Ex. João" class="form-control input-md">
+              -->
 
               <h3>Endereço</h3>
+              
 
               <label class="control-label field-label" for="cidade">Cidade</label>
-              <input id="cidade" name="cidade" type="text" ng-model="guincho.endereco.cidade" placeholder="Ex. Blumenau" class="form-control input-md">
+              <input id="cidade" name="cidade" type="text" ng-model="vm.pessoajuridica.endereco.cidade" placeholder="Ex. Blumenau" class="form-control input-md cpf-mask">  
 
               <label class="control-label field-label" for="uf">UF</label>
-              <input id="uf" name="uf" type="text" ng-model="guincho.endereco.uf" placeholder="Ex. SC" class="form-control input-md">
+              <input id="uf" name="uf" type="text" ng-model="vm.pessoajuridica.uf" placeholder="Ex. SC" class="form-control input-md cpf-mask">
+              
+              <label class="control-label field-label" for="bairro">Bairro</label>  
+              <input id="bairro" name="bairro" type="text" ng-model="vm.pessoajuridica.endereco.bairro" placeholder="Ex. Centro" class="form-control input-md cpf-mask">  
 
-              <label class="control-label field-label" for="bairro">Bairro</label>
-              <input id="bairro" name="bairro" type="text" ng-model="guincho.endereco.bairro" placeholder="Ex. Centro" class="form-control input-md">
-
-              <label class="control-label field-label" for="rua">Rua</label>
-              <input id="rua" name="rua" type="text" ng-model="guincho.endereco.rua" placeholder="Ex. XV Novembro" class="form-control input-md">
-
+              <label class="control-label field-label" for="rua">Rua</label>  
+              <input id="rua" name="rua" type="text" ng-model="vm.pessoajuridica.endereco.rua" placeholder="Ex. XV Novembro" class="form-control input-md cpf-mask">  
+                           
               <label class="control-label field-label" for="complemento">Complemento</label>
-              <input id="complemento" name="complemento" type="text" ng-model="guincho.endereco.complemento" placeholder="Ex. Apartamento" class="form-control input-md cpf-mask">
+              <input id="complemento" name="complemento" type="text" ng-model="vm.pessoajuridica.endereco.complemento" placeholder="Ex. Oitavo ander" class="form-control input-md cpf-mask">
 
-              <label class="control-label field-label" for="numero">Número</label>
-              <input id="numero" name=numero" type="text" ng-model="guincho.endereco.numero" placeholder="Ex. 80" class="form-control input-md">
+              <label class="control-label field-label" for="numero">Numero</label>
+              <input id="numero" name=numero" type="text" ng-model="vm.pessoajuridica.endereco.numero" placeholder="Ex. 4533" class="form-control input-md cpf-mask">
 
               <label class="control-label field-label" for="cep">CEP</label>
-              <input id="cep" name="cep" type="text" ng-model="guincho.endereco.cep" placeholder="Ex. 89107000" class="form-control input-md">
+              <input id="cep" name="cep" type="text" ng-model="vm.pessoajuridica.endereco.cep" placeholder="Ex. 89107-000" class="form-control input-md cpf-mask">
+                
+
+              <h3>Dados do Veiculo</h3>
+
+              <label class="control-label field-label" for="fabricante">Fabricante</label>  
+              <input id="fabricante" name="fabricante" type="text" ng-model="vm.veiculo.fabricante" placeholder="Ex. Volkswagen" class="form-control input-md cpf-mask">  
+              <label class="control-label field-label" for="modelo">Modelo</label>  
+              <input id="modelo" name="modelo" type="text" ng-model="vm.veiculo.modelo" placeholder="Ex. Gol" class="form-control input-md cpf-mask">  
+             
+              <label class="control-label field-label" for="ano">Ano</label>  
+              <input id="ano" name="ano" type="text" ng-model="vm.veiculo.ano" placeholder="Ex.  1990" class="form-control input-md cpf-mask">  
+
+              <label class="control-label field-label" for="placa">Placa</label>  
+              <input id="placa" name="placa" type="text" ng-model="vm.veiculo.placa" placeholder="Ex. ZZZ-9999" class="form-control input-md cpf-mask">  
+
+              <label class="control-label field-label" for="cor">Cor</label>  
+              <input id="cor" name="cor" type="text" ng-model="vm.veiculo.cor" placeholder="Ex. Preto" class="form-control input-md cpf-mask">  
+              
+              <label class="control-label field-label" for="renavam">RENAVAM</label>  
+              <input id="renavam" name="renavam" type="text" ng-model="vm.veiculo.renavam" placeholder="Ex. 99999999" class="form-control input-md cpf-mask">  
+
+              <input type="submit" id="button1id" name="button1id" class="btn btn-success" value="ADD Veiculo" ng-click="vm.addVeiculo(veiculo)"/>
+              <!--{{vm.veiculo}}-->
+
 
               <h3>Segurança</h3>
-              <label class="control-label field-label" for="senha">Senha</label>
-              <input id="senha" name="senha" type="password" placeholder="Insira aqui sua senha" class="form-control input-md">
-
-              <label class="control-label field-label" for="confirmarSenha">Confirmar Senha</label>
-              <input id="confirmarSenha" name="confirmarSenha" type="password" placeholder="Insira novamente sua senha" class="form-control input-md">
-
-              {{guincho}}
+              <label class="control-label field-label" for="senha">Senha</label>  
+              <input id="senha" name="senha" type="password" ng-model="vm.pessoajuridica.senha" placeholder="Insira aqui sua senha" class="form-control input-md cpf-mask">  
+         
+              <label class="control-label field-label" for="confirmarSenha">Confirmar Senha</label>  
+              <input id="confirmarSenha" name="confirmarSenha" type="password" placeholder="Insira novamente sua senha" class="form-control input-md cpf-mask">
             </div>
 
-            <input type="submit" id="cadastrarGuincho" name="cadastrarGuincho" class="btn btn-success" value="CADASTRAR" ng-click="addGuincho(guincho)"/>
-          </form>
+            <!--<button id="button1id" name="button1id" class="btn btn-success">Cadastrar</button>-->
+            <!--{{vm.pessoajuridica}}-->
+            <input type="submit" id="button1id" name="button1id" class="btn btn-success" value="CADASTRAR" ng-click="vm.addDados(vm.pessoajuridica)";/>
+            <!-- <button id="button2id" name="button2id" class="btn btn-danger">Scary Button</button>-->  
+          </form> 
         </div>
       </div>
     </div>
 
-    <!-- <footer class="site-footer">
+
+    <footer class="site-footer">    
       <div class="container">
           <div class="row">
             <div class="col-md-12">
@@ -138,7 +210,7 @@
             </div>
           </div>
       </div>
-    </footer> -->
+    </footer>
 
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/bootstrap.js"></script>
