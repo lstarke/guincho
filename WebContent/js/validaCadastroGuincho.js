@@ -6,6 +6,15 @@ function mascaraInteiro(){
         return true;
 }
 
+//adiciona de caracteres
+function mascaraCaracter(nome){
+    if (event.keyCode > 48 && event.keyCode < 57){
+                event.returnValue = false;
+                return false;
+    }
+    return true;       
+}
+
 //adiciona mascara ao telefone
 function mascaraTelefone(tel){  
         if(mascaraInteiro(tel)==false){
@@ -46,6 +55,8 @@ function validaSenha(senha1, senha2){
   }
 
 }
+
+
 
 //valida o CNPJ digitado
 function validaCNPJ(ObjCnpj){

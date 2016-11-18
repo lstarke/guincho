@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html>
-
+<html ng-app= "myApp">
   <head>
-    <title>Home</title>
+  <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--tag css-->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="css/estilo.css" rel="stylesheet" media="screen">
-          
+    <link href="css/estilo.css" rel="stylesheet" media="screen"> 
+
+    <script src="js/angular.js"></script>
+
+    <script>
+       angular.module("myApp",[]);
+       angular.module("myApp").controller("homeCtrl", function ($scope, $http) {
+
+       var vm = this;
+       console.log('foi')
+
+       validar();
+
+
+       function validar(){
+          var usuario = JSON.parse(localStorage.getItem('login'));
+
+          $http({
+            method: 'GET',
+            url: "http://localhost:8080/login/" + usuario.username
+          }).then(function(res) {
+            console.log(res.data.senha);
+            if(res.data.senha != usuario.password) {
+              alert('senha inválida');
+            }
+          })         
+
+        };
+
+      });
+     
+    </script>
+
+
+
   </head>
 
 
-  <body>
+  <body ng-controller="homeCtrl as vm">
 
-
-    <header>
+   <header>
       <nav class="navbar navbar-inverse navbar-fixed-top corFundo">
         <div class="container">
           <div class="navbar-header">
@@ -169,6 +200,7 @@
 
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/bootstrap.js"></script>
+
 
   </body>
 </html>

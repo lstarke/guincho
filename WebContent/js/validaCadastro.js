@@ -11,7 +11,7 @@ function mascaraInteiro(){
 function mascaraCPF(cpf){
         if(mascaraInteiro(cpf)==false){
                 event.returnValue = false;
-        }
+        }       
         return formataCampo(cpf, '000.000.000-00', event);
 }
 
@@ -19,19 +19,19 @@ function mascaraCPF(cpf){
 function mascaraRG(rg){
         if(mascaraInteiro(cpf)==false){
                 event.returnValue = false;
-        }
+        }  
 
         if((rg)==false){
                 event.returnValue = false;
-        }
+        }       
         return formataCampo(rg, '000.000.000-0', event);
 }
 
 //adiciona mascara ao telefone
-function mascaraTelefone(tel){
+function mascaraTelefone(tel){  
         if(mascaraInteiro(tel)==false){
                 event.returnValue = false;
-        }
+        }       
         return formataCampo(tel, '(00) 0000-0000', event);
 }
 
@@ -41,7 +41,7 @@ function mascaraCaracter(nome){
                 event.returnValue = false;
                 return false;
     }
-    return true;
+    return true;       
 }
 
 
@@ -50,7 +50,7 @@ function validarNome() {
 var nome = form1.nome.value;
 
 if (nome == "") {
-alert('Preencha o campo com seu nome.');
+alert('Preencha o campo com seu nome');
 
 return false;
 }
@@ -59,13 +59,15 @@ return false;
 function validaTelefone(tel){
         exp = /\(\d{2}\)\ \d{4}\-\d{4}/
         if(!exp.test(tel.value))
-                alert('Número de telefone inválido. Por favor, insira um telefone no formato (00) 0000-0000.');
+                alert('Numero de Telefone Invalido!');
 }
 
 function validaSenha(senha1, senha2){
+
   if(senha1 != senha2){
-    alert('As senhas informadas não correspondem.');
+    alert('Senhas diferentes');
   }
+
 }
 
 
@@ -74,7 +76,7 @@ function validaCPF(){
         var cpf = form1.cpf.value;
 
         exp = /\.|\-/g
-        cpf = cpf.toString().replace( exp, "" );
+        cpf = cpf.toString().replace( exp, "" ); 
         var digitoDigitado = eval(cpf.charAt(9)+cpf.charAt(10));
         var soma1=0, soma2=0;
         var vlr =11;
@@ -83,44 +85,45 @@ function validaCPF(){
                 soma1+=eval(cpf.charAt(i)*(vlr-1));
                 soma2+=eval(cpf.charAt(i)*vlr);
                 vlr--;
-        }
+        }       
         soma1 = (((soma1*10)%11)==10 ? 0:((soma1*10)%11));
         soma2=(((soma2+(2*soma1))*10)%11);
 
         var digitoGerado=(soma1*10)+soma2;
-        if(digitoGerado!=digitoDigitado)
-                alert('O CPF inválido. Por favor, verifique o número de seu CPF e digite novamente.');
+        if(digitoGerado!=digitoDigitado)        
+                alert('CPF Invalido!');         
 }
 
 //formata de forma generica os campos
-function formataCampo(campo, Mascara, evento) {
-        var boleanoMascara;
+function formataCampo(campo, Mascara, evento) { 
+        var boleanoMascara; 
 
         var Digitato = evento.keyCode;
         exp = /\-|\.|\/|\(|\)| /g
-        campoSoNumeros = campo.value.toString().replace( exp, "" );
+        campoSoNumeros = campo.value.toString().replace( exp, "" ); 
 
-        var posicaoCampo = 0;
+        var posicaoCampo = 0;    
         var NovoValorCampo="";
-        var TamanhoMascara = campoSoNumeros.length;;
+        var TamanhoMascara = campoSoNumeros.length;; 
 
-        if (Digitato != 8) { // backspace
-                for(i=0; i<= TamanhoMascara; i++) {
+        if (Digitato != 8) { // backspace 
+                for(i=0; i<= TamanhoMascara; i++) { 
                         boleanoMascara  = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".")
-                                                                || (Mascara.charAt(i) == "/"))
-                        boleanoMascara  = boleanoMascara || ((Mascara.charAt(i) == "(")
-                                                                || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " "))
-                        if (boleanoMascara) {
-                                NovoValorCampo += Mascara.charAt(i);
+                                                                || (Mascara.charAt(i) == "/")) 
+                        boleanoMascara  = boleanoMascara || ((Mascara.charAt(i) == "(") 
+                                                                || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " ")) 
+                        if (boleanoMascara) { 
+                                NovoValorCampo += Mascara.charAt(i); 
                                   TamanhoMascara++;
-                        }else {
-                                NovoValorCampo += campoSoNumeros.charAt(posicaoCampo);
-                                posicaoCampo++;
-                          }
-                  }
+                        }else { 
+                                NovoValorCampo += campoSoNumeros.charAt(posicaoCampo); 
+                                posicaoCampo++; 
+                          }              
+                  }      
                 campo.value = NovoValorCampo;
-                  return true;
-        }else {
-                return true;
+                  return true; 
+        }else { 
+                return true; 
         }
 }
+
